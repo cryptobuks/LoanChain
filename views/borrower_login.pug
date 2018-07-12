@@ -1,0 +1,122 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title Loan Chain
+  link(rel='stylesheet', href='assets/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet', href='assets/fonts/font-awesome.min.css')
+  link(rel='stylesheet', href='assets/fonts/material-icons.css')
+  link(rel='stylesheet', href='assets/css/styles.css')
+header
+  div
+    .container
+      .row
+        .col-lg-2.col-md-2
+          img(src='assets/img/loanchain_logo.png', width='80', height='80')
+        .col-lg-3.col-lg-offset-7.col-md-3.col-md-offset-7
+          .row
+            .col-lg-1.col-md-1
+              i.glyphicon.glyphicon-user(style='margin-top: 18px;')
+            .col-lg-4.col-md-4(style='margin-top:15px;')
+              .dropdown(style='float: right;')
+                span.btn.dropdown-toggle(type='button', data-toggle='dropdown', style='padding:0px 12px;')
+                  | Sign In
+                  span.caret
+                ul.dropdown-menu
+                  li
+                    a(href=baseurl+'/borrower_login')
+                      i.glyphicon.glyphicon-user(style='margin-top: 0px;')
+                      |                                   Login As Borrower
+                  li
+                    a(href=baseurl+'/lender_login')
+                      i.glyphicon.glyphicon-user(style='margin-top: 0px;')
+                      |                                   Login As Investor
+            .col-lg-1.col-md-1
+              i.glyphicon.glyphicon-edit(style='margin-top:15px;')
+            .col-lg-4.col-md-4(style='margin-top:15px;')
+              a(href=baseurl)
+                span Sign Up
+  nav.navbar.navbar-default.affix-top(data-spy='affix', data-offset-top='100', style='width: 100%; top:0; z-index:99;')
+    .container
+      .navbar-header
+        button.navbar-toggle.collapsed(data-toggle='collapse', data-target='#navcol-1')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      #navcol-1.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          li(role='presentation')
+            a(href='#') Personal Loan
+          li(role='presentation')
+            a(href='#') Investment 
+          li(role='presentation')
+            a(href=baseurl+'/active_borrower') Active Borrowers
+          li(role='presentation')
+            a(href='#') About Us
+form
+  .background-img
+    .container(style='background:#fff;')
+      .row
+        .col-sm-12.col-md-12.col-lg-12
+          .col-sm-6.col-md-6.col-lg-6
+            h1(style='text-align:center; ;') Login to Loan Chain
+            br
+            br
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+              i.glyphicon.glyphicon-user
+              .group
+                input(type='email', name='email', required='')
+                span.highlight
+                span.bar
+                label Email-Id
+            br
+            br
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+              i.glyphicon.glyphicon-lock
+              .group
+                input(type='password', name='password', required='')
+                span.highlight
+                span.bar
+                label Password
+            div
+              span(style='color: #fc5900; ;') Forgot Password?
+            br
+            div
+              button.btn.btn-success(type='submit', style='border-radius:25px;width: 35%;margin-left: 32%;') Login
+          .col-sm-6.col-md-6.col-lg-6(style=" background-image:url('./assets/img/slider.png'); height:500px;")
+            h1(style='text-align:center; color: #000; ;') New Users
+            br
+            br
+            br
+            br
+            div
+              button.btn(type='submit', style='text-align: center;             background: #fc5900;margin: 10px;color: #fff;width: 100%;border-radius: 25px; ;') Apply for Personal Loan
+            br
+            div
+              button.btn(type='submit', style='text-align: center; background: #398439;margin: 10px;color: #fff;width: 100%;border-radius: 25px;') Start Investment
+            br
+script(src='assets/js/jquery.min.js')
+script(src='assets/bootstrap/js/bootstrap.min.js')
+script(src='assets/js/untitled.js')
+script.
+  $(function () {
+  $('form').on('submit', function (e) {
+  e.preventDefault();
+  $.ajax({
+  type: 'post',
+  url: '/borrower_valid',
+  data: $('form').serialize(),
+  success: function (response) {
+  console.log(response)
+  if(response=='fail'){
+  alert('either email or password is incorrect');
+  }else{
+  window.location= '/borrower_home?id='+ response[0].id
+  }
+  }
+  });
+  });
+  });
+
+

@@ -1,0 +1,276 @@
+doctype html
+head
+  script(src='https://code.jquery.com/jquery-3.3.1.js')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+  script(src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')
+  script(src='https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js')
+  link(rel='stylesheet' type='text/css' href='https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css')
+  link(rel='stylesheet' href='assets/css/styles.css')
+  title
+  style.
+    ::placeholder{
+    color:#fff;
+    font-size:14px;
+    }
+header
+  div
+    .container
+      .row
+        .col-lg-2.col-md-2
+          img(src='assets/img/loanchain_logo.png' width='80' height='80')
+        .col-lg-3.col-lg-offset-7.col-md-3.col-md-offset-7(style= display2)
+          .row
+            .col-lg-1.col-md-1
+              i.glyphicon.glyphicon-user(style='margin-top: 21px;')
+            .col-lg-4.col-md-4(style='margin-top:15px;')
+              .dropdown(style='float: right;')
+                span.btn.dropdown-toggle(type='button' data-toggle='dropdown' style='padding:0px 12px;')
+                  | Sign In
+                  span.caret
+                ul.dropdown-menu
+                  li
+                    a(href=baseurl +'/borrower_login')
+                      i.glyphicon.glyphicon-user(style='margin-top: 0px;')
+                      |                                   Login As Borrower
+                  li
+                    a(href=baseurl+'/lender_login')
+                      i.glyphicon.glyphicon-user(style='margin-top: 0px;')
+                      |                                   Login As Investor
+            .col-lg-1.col-md-1
+              i.glyphicon.glyphicon-edit(style='margin-top:18px;')
+            .col-lg-4.col-md-4(style='margin-top:15px;')
+              a(href=baseurl)
+                span Sign Up
+        .col-lg-2.col-lg-offset-8.col-md-2.col-md-offset-8(style= display1)
+          .row
+            .col-lg-12.col-md-12(style='margin-top:15px;')
+              .dropdown(style='float: right;')
+                span.btn.dropdown-toggle(type='button' data-toggle='dropdown' style='padding:0px 12px;')
+                  | Myaccount
+                  span.caret
+                ul.dropdown-menu
+                  li
+                    a(href= homeurl)
+                      i.glyphicon.glyphicon-user(style='margin-top: 0px;')
+                      |                                   Home
+                  li
+                    a(href= baseurl+'/logout')
+                      i.glyphicon.glyphicon-user(style='margin-top: 0px;')
+                      |                                   Logout
+  nav.navbar.navbar-default(style='width: 100%;')
+    .container
+      .navbar-header
+        button.navbar-toggle.collapsed(data-toggle='collapse' data-target='#navcol-1')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      #navcol-1.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          li(role='presentation')
+            a(href='#') Personal Loan
+          li(role='presentation')
+            a(href='#') Investment 
+          li(role='presentation')
+            a(href=baseurl+'/active_borrower') Active Borrowers
+          li(role='presentation')
+            a(href='#') About Us
+.container
+  .container
+    .row.div_filter(style='padding-bottom: 10px;')
+      .col-sm-12.col-md-12.col-lg-12(style='margin-top: 10px;')
+        .col-sm-10.col-md-10.col-lg-10
+          i.glyphicon.glyphicon-filter(style='font-size: 25px;')
+          span(style='font-size: 25px;') Filter
+        .col-sm-2.col-md-2.col-lg-2
+          button.btn.btn-success.btn_filter(type='button' style='float: right;margin-right: -19px;') Clear Filter
+      .col-sm-12.col-md-12.col-lg-12(style='margin-bottom:5px;margin-top:5px;')
+        .col-sm-3.col-md-3.col-lg-3
+          span Risk Category
+        .col-sm-3.col-md-3.col-lg-3
+          span Cibil Score
+        .col-sm-3.col-md-3.col-lg-3
+          span Interest Rate
+        .col-sm-3.col-md-3.col-lg-3
+          span Purpose
+      br
+      .col-sm-12.col-md-12.col-lg-12
+        .col-sm-3.col-md-3.col-lg-3
+          button.btn.dropdown-toggle(style='background: #0691d9;color: #fff;padding: 0px;width: 100%;')
+          select(style='background: #0691d9;font-size:14px;')
+            option(value='A' selected='' style='background: #fff;color:#000') A
+            option(value='B' style='background: #fff;color:#000') B
+            option(value='C' style='background: #fff;color:#000') C
+            option(value='D' style='background: #fff;color:#000') D
+            option(value='E' style='background: #fff;color:#000') E
+            option(value='F' style='background: #fff;color:#000') F
+        .col-sm-3.col-md-3.col-lg-3
+          button.btn.dropdown-toggle(style='background: #0691d9;color: #fff;padding: 0px;width: 100%;')
+          select(style='background: #0691d9;font-size:14px;')
+            option(value='700' selected='' style='background: #fff;color:#000') &gt;700
+            option(value='650-700' style='background: #fff;color:#000') 650-700
+            option(value='600-650' style='background: #fff;color:#000') 600-650
+            option(value='NA' style='background: #fff;color:#000') No Cibil History
+        .col-sm-3.col-md-3.col-lg-3
+          button.btn.dropdown-toggle(style='background: #0691d9;color: #fff;padding: 0px;width: 100%;')
+          select(style='background: #0691d9;font-size:14px;')
+            option(value='11%-15%' selected='' style='background: #fff;color:#000') 11%-15%
+            option(value='16%-20%' style='background: #fff;color:#000') 16%-20%
+            option(value='21%-25%' style='background: #fff;color:#000') 21%-25%
+            option(value='26%-30%' style='background: #fff;color:#000') 26%-30%
+        .col-sm-3.col-md-3.col-lg-3
+          button.btn.dropdown-toggle(style='background: #0691d9;color: #fff;padding: 0px;width: 100%;')
+          select(style='background: #0691d9;font-size:14px;')
+            option(value='Education' selected='' style='background: #fff;color:#000') Education
+            option(value='Personal Loan Consolidation' style='background: #fff;color:#000') Personal Loan Consolidation
+            option(value='Medical Expenses' style='background: #fff;color:#000') Medical Expenses
+            option(value='Home Loan' style='background: #fff;color:#000') Home Loan
+        br
+        br
+      .col-sm-12.col-md-12.col-lg-12(style='margin-bottom:5px;margin-top:5px;')
+        .col-sm-3.col-md-3.col-lg-3
+          span Tenure
+        .col-sm-3.col-md-3.col-lg-3
+          span Employment
+        .col-sm-3.col-md-3.col-lg-3
+          span Monthly Income
+        .col-sm-3.col-md-3.col-lg-3
+          span Enter Location
+      .col-sm-12.col-md-12.col-lg-12
+        .col-sm-3.col-md-3.col-lg-3
+          button.btn.dropdown-toggle(style='background: #0691d9;color: #fff;padding: 0px;width: 100%;')
+          select(style='background: #0691d9;font-size:14px;')
+            option(value='0-3' style='background: #fff;color:#000') less than 3 months
+            option(value='3-6' style='background: #fff;color:#000') 3months-6months
+            option(value='7-12' style='background: #fff;color:#000') 7months-12months
+            option(value='13-18' style='background: #fff;color:#000') 13months-18months
+            option(value='19-24' style='background: #fff;color:#000') 19months-24months
+            option(value='>24' style='background: #fff;color:#000') greater than 24months
+        .col-sm-3.col-md-3.col-lg-3
+          button.btn.dropdown-toggle(style='background: #0691d9;color: #fff;padding: 0px;width: 100%;')
+          select(style='background: #0691d9;font-size:14px;')
+            option(value='Salaried' selected='' style='background: #fff;color:#000') Salaried Employee
+            option(value='Self-Employee-Business' style='background: #fff;color:#000') Self Emp Business
+            option(value='Self-Employee-Professional' style='background: #fff;color:#000') Self Emp Professional
+        .col-sm-3.col-md-3.col-lg-3
+          button.btn.dropdown-toggle(style='background: #0691d9;color: #fff;padding: 0px;width: 100%;')
+          select(style='background: #0691d9;font-size:14px;')
+            option(value='<25' selected='' style='background: #fff;color:#000') less than 25,000
+            option(value='25-50'  style='background: #fff;color:#000') 25,000-50,000
+            option(value='50-75'  style='background: #fff;color:#000') 50,000-75,000
+            option(value='>75'  style='background: #fff;color:#000') more than 75,000
+        .col-sm-3.col-md-3.col-lg-3
+          button.btn.dropdown-toggle(style='background: #0691d9;color: #fff;padding: 0px;width: 100%;')
+          input(type='text' name='' placeholder='Enter Location' style='background: #0691d9;font-size:14px;')
+        br
+        br
+    br
+    div(style=display2)
+      span(style='color:#f00;')  *Please Register/Login as Investor to see the complete details
+    br
+  .container
+    div
+      table#active_borrowers_list.table.table-striped.table-bordered(style='width:100%')
+        thead(style='background:#0077b5;color:#fff;')
+          tr.tbl_background
+            th Personal Details
+            th Loan Details
+            th Employment Details
+            th Funding Status
+            th Invest
+            th Action
+        tbody
+          if rows
+            each item, index in rows
+              tr
+                td
+                  i.glyphicon.glyphicon-user(style='color: #0691d9;')
+                  span lch#: #{item.borrowerID}
+                  br
+                  span Name: #{item.fname} #{item.mname} #{item.lname}
+                  br
+                  span Age: #{item.age}
+                  br
+                  span Location: #{item.city}
+                  br
+                  span Residence Type: #{item.residence}
+                td
+                  span Loan Id: #{item.borrowerID}
+                  br
+                  span Purpose: #{item.purpose}
+                  br
+                  span Cibil Score: #{item.cibil_score}
+                  br
+                  span i2i Risk Category: C
+                  br
+                  span Int. Rate: #{item.interest}
+                  br
+                  span Tenure: #{item.tenure}
+                td
+                  span Employment Type: #{item.job}
+                  br
+                  span Monthly Income: #{item.profit}
+                  br
+                  span Profession: #{item.prof}
+                td
+                  span Loan Amount: #{item.net_borrowed}
+                  br
+                  .progress
+                    .progress-bar.progress-bar-striped.bg-success(role='progressbar' style="width:"+100*(item.net_borrowed-item.amount_left)/item.net_borrowed+"%" aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
+                  span Days Left: 
+                td
+                  form
+                    input(type='number'  id ='pa'+ item.borrowerID name='principal' placeholder='Enter Amount')
+                    input(type='hidden'  id ='lid'+item.borrowerID name='id' value= id)
+                    input(type='hidden'  id ='bid'+item.borrowerID name='borrowerID' value= item.borrowerID)
+                    br
+                    br
+                    div(style= display1)
+                      button.btn.btn_funding(type='btn btn-default') Calculate EMI
+                      br
+                      br
+                      button.btn.btn_funding(type='button',  onclick='invest('+item.borrowerID+')') Invest Now
+                      br
+                      br
+                      button.btn.btn_funding(type='btn btn-default') Funding Completed
+                td(style='color: #0691d9;')
+                  i.fa.fa-file-text
+                  span View Details
+                  br
+                  i.fa.fa-user-plus
+                  span Follow
+                  br
+                  i.glyphicon.glyphicon-envelope
+                  span Message
+script(type='text/javascript').
+  $(document).ready(function() {
+  $('#active_borrowers_list').DataTable();
+  } );
+script.
+  function invest(borrowerID) {
+    var data_obj = {
+      principal:document.getElementById("pa"+borrowerID).value,
+      borrowerID:document.getElementById("bid"+borrowerID).value,
+      id:document.getElementById("lid"+borrowerID).value
+    };
+    console.log(borrowerID)
+
+    $.ajax({
+    type: 'get',
+    url: '/create_lendinfo',
+    data: data_obj,
+    success: function (response) {
+    console.log(response)
+    if(response=='fail'){
+    alert(' your balance is less or you are exceeding lending limit or you have already lended to this borrower');
+    }else{
+    window.location= '/active_borrower?id='+ response[0].ID
+    }
+    }
+    });
+
+
+  }
+

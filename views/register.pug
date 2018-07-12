@@ -1,0 +1,79 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Loan Chain
+  link(rel='stylesheet' href='assets/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet' href='assets/fonts/font-awesome.min.css')
+  link(rel='stylesheet' href='assets/fonts/material-icons.css')
+  link(rel='stylesheet' href='assets/css/styles.css')
+header
+  div
+    .container
+      .row
+        .col-lg-2.col-md-2
+          img(src='assets/img/loanchain_logo.png' width='80' height='80')
+        .col-lg-3.col-lg-offset-7.col-md-3.col-md-offset-7
+          .row(style='margin-top:15px;')
+            .dropdown(style='float: right;')
+              span.btn.dropdown-toggle(type='button' data-toggle='dropdown')
+                a(href='index.html')
+                  i.glyphicon.glyphicon-user(style='margin-top: 0px;')
+                  | Sign Up
+              .dropdown(style='float: right;')
+                span.btn.dropdown-toggle(type='button' data-toggle='dropdown')
+                  i.glyphicon.glyphicon-user(style='margin-top: 0px;')
+                  | Sign In
+                  span.caret
+                ul.dropdown-menu
+                  li
+                    a(href=baseurl+'/borrower_login')
+                      i.glyphicon.glyphicon-user(style='margin-top: 0px;')
+                      |                                   Login As Borrower
+                  li
+                    a(href=baseurl+'/lender_login')
+                      i.glyphicon.glyphicon-user(style='margin-top: 0px;')
+                      |                                   Login As Investor
+    nav.navbar.navbar-default.affix-top(data-spy='affix' data-offset-top='100' style='width: 100%; top:0; z-index:99;')
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(data-toggle='collapse' data-target='#navcol-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        #navcol-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li(role='presentation')
+              a(href='#') Personal Loan
+            li(role='presentation')
+              a(href='#') Investment 
+            li(role='presentation')
+              a(href= baseurl+'/active_borrower') Active Borrowers
+            li(role='presentation')
+              a(href='#') About Us
+.container-fluid(style='margin-top: -45px;')
+  .background_img
+    .page-header
+      h1.text-center
+        strong Welcome To Loan Chain
+    h2.text-center Sign Up As
+    .row
+      .col-lg-6.col-md-6.col-sm-6
+        h1(style='text-align: right;') Borrower 
+      .col-lg-6.col-md-6.col-sm-6
+        h1  Investor 
+    .row
+      .col-lg-6.col-md-6(style='text-align: right;')
+        img(src='assets/img/borrower_new.png')
+      .col-lg-6.col-md-6
+        img(src='assets/img/investor-new.png')
+    .row
+      .col-lg-6.col-md-6(style='text-align: right;')
+        a.btn.btn-default.btn_borrower(role='button' href=baseurl+'/borrower_form') For Personal Loan
+      .col-lg-6.col-md-6
+        a.btn.btn-default.btn_investor(role='button' href=baseurl+'/lender_form') To Start Investment
+script(src='assets/js/jquery.min.js')
+script(src='assets/bootstrap/js/bootstrap.min.js')
+script(src='assets/js/untitled.js')
+

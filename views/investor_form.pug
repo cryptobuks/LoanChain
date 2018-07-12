@@ -1,0 +1,249 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Loan Chain
+  link(rel='stylesheet' href='assets/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet' href='assets/fonts/font-awesome.min.css')
+  link(rel='stylesheet' href='assets/fonts/material-icons.css')
+  link(rel='stylesheet' href='assets/css/styles.css')
+header
+  div
+    .container
+      .row
+        .col-lg-2.col-md-2
+          img(src='assets/img/loanchain_logo.png' width='80' height='80')
+        .col-lg-3.col-lg-offset-7.col-md-3.col-md-offset-7
+          .row
+            .col-lg-1.col-md-1
+              i.glyphicon.glyphicon-user(style='margin-top: 18px;')
+            .col-lg-4.col-md-4(style='margin-top:15px;')
+              .dropdown(style='float: right;')
+                span.btn.dropdown-toggle(type='button' data-toggle='dropdown' style='padding:0px 12px;')
+                  | Sign In
+                  span.caret
+                ul.dropdown-menu
+                  li
+                    a(href=baseurl+'/borrower_login')
+                      i.glyphicon.glyphicon-user(style='margin-top: 0px;')
+                      |                                   Login As Borrower
+                  li
+                    a(href=baseurl+'/lender_login')
+                      i.glyphicon.glyphicon-user(style='margin-top: 0px;')
+                      |                                   Login As Investor
+            .col-lg-1.col-md-1
+              i.glyphicon.glyphicon-edit(style='margin-top:15px;')
+            .col-lg-4.col-md-4(style='margin-top:15px;')
+              a(href=baseurl)
+                span Sign Up
+  nav.navbar.navbar-default.affix-top(data-spy='affix' data-offset-top='100' style='width: 100%; top:0; z-index:99;')
+    .container
+      .navbar-header
+        button.navbar-toggle.collapsed(data-toggle='collapse' data-target='#navcol-1')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      #navcol-1.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          li(role='presentation')
+            a(href='#') Personal Loan
+          li(role='presentation')
+            a(href='#') Investment 
+          li(role='presentation')
+            a(href=baseurl+'/active_borrower') Active Borrowers
+          li(role='presentation')
+            a(href='#') About Us
+.background-img
+  .container(style='background:#fff;')
+    form(action='lender_signup' method='post')
+      .row
+        .col-md-12
+          .col-md-12
+            h1.text-center Register as Individual Investor
+            br
+            br
+            .row
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                div(style='display: -webkit-inline-box;')
+                  i.glyphicon.glyphicon-user
+                  .group
+                    input#investor_fname(type='text' name='fname' required='')
+                    span.highlight
+                    span.bar
+                    label First Name
+                br
+                span#inv_first_name_error_message.error_form
+              //
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><i class="glyphicon glyphicon-user"></i>
+                <input type="text" placeholder="First Name">
+                </div>
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                div(style='display: -webkit-inline-box;')
+                  i.glyphicon.glyphicon-user
+                  .group
+                    input#investor_mname(type='text' name='mname' required='')
+                    span.highlight
+                    span.bar
+                    label Middle Name
+                br
+                span#inv_middle_name_error_message.error_form
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                div(style='display: -webkit-inline-box;')
+                  i.glyphicon.glyphicon-user
+                  .group
+                    input#investor_lname(type='text' name='lname' required='')
+                    span.highlight
+                    span.bar
+                    label Last Name
+              br
+              span#inv_last_name_error_message.error_form
+            br
+            .row
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                .row(style='margin-top:45px;')
+                  .col-lg-1.col-md-1
+                    i.fa.fa-intersex(style='font-weight:600;font-size:18px;margin-top:10px;')
+                  .col-lg-4.col-md-4(style='margin-left:20px;')
+                    .radio
+                      span
+                        input(type='radio' name='gender' value='m' style='width:auto !important;')
+                        |  Male
+                  .col-lg-4.col-md-4(style='margin-left:20px;')
+                    .radio
+                      span
+                        input(type='radio' name='gender' value='f' style='width:auto !important;')
+                        |  Female
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                div(style='display: -webkit-inline-box;')
+                  i.glyphicon.glyphicon-edit
+                  .group
+                    input#investor_aadhaar_no(type='text' name='aadhar' required='')
+                    span.highlight
+                    span.bar
+                    label Aadhaar Number
+                br
+                span#inv_aadhaar_no_error_message.error_form
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                div(style='display: -webkit-inline-box;')
+                  i.glyphicon.glyphicon-edit
+                  .group
+                    input#investor_pan_no(type='text' maxlength='10' name='pancard' required='')
+                    span.highlight
+                    span.bar
+                    label PAN Number
+                br
+                span#inv_pan_no_error_message.error_form
+            br
+            .row
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                div(style='display: -webkit-inline-box;')
+                  i.glyphicon.glyphicon-calendar
+                  .group
+                    input#inv_dob(type='date' name='dob' required='')
+                    span.highlight
+                    span.bar
+                br
+                span#inv_dob_error_message.error_form
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                div(style='display: -webkit-inline-box;')
+                  i.fa.fa-building
+                  .group
+                    input#inv_pincode(type='number' name='pincode' required='')
+                    span.highlight
+                    span.bar
+                    label Pincode
+                br
+                span#inv_pincode_error_message.error_form
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                div(style='display: -webkit-inline-box;')
+                  i.fa.fa-building
+                  .group
+                    input#inv_city(type='text' name='city' required='')
+                    span.highlight
+                    span.bar
+                    label City
+                br
+                span#inv_city_error_message.error_form
+            br
+            .row
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                div(style='display: -webkit-inline-box;')
+                  i.glyphicon.glyphicon-envelope
+                  .group
+                    input#investor_email(type='text' name='email' required='')
+                    span.highlight
+                    span.bar
+                    label Email-Id
+                br
+                span#inv_email_error_message.error_form
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                div(style='display: -webkit-inline-box;')
+                  i.glyphicon.glyphicon-lock
+                  .group
+                    input#investor_password(type='text' name='password' required='')
+                    span.highlight
+                    span.bar
+                    label Password
+                br
+                span#inv_password_error_message.error_form
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                div(style='display: -webkit-inline-box;')
+                  i.glyphicon.glyphicon-check
+                  .group
+                    input#investor_retype_password(type='text' name='re-password' required='')
+                    span.highlight
+                    span.bar
+                    label Re-type Password
+                br
+                span#inv_retype_password_error_message.error_form
+            br
+            .row
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                div(style='display: -webkit-inline-box;')
+                  i.glyphicon.glyphicon-phone
+                  .group
+                    input#investor_mobile_no(type='text' name='contact' required='')
+                    span.highlight
+                    span.bar
+                    label Mobile No
+                span#inv_mobile_no_error_message.error_form
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12(style='text-align:center;')
+                button.btn.btn-primary(type='submit' style='width:50%;') SEND OTP
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.glyphicon.glyphicon-phone
+                .group
+                  input(type='text' name='mobile_otp' required='')
+                  span.highlight
+                  span.bar
+                  label Enter Mobile OTP
+            br
+            .row(style='margin-left:30px;')
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .checkbox
+                  p
+                    input(type='checkbox' style='width:auto !important;')
+                    |  I have read, understood, and I agree to the&nbsp;
+                    a(href='' target='_blank') &quot;Terms and Conditions&quot;
+                    |  set forth by loanchain.com.
+            .row(style='margin-left:30px;')
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .checkbox
+                  p
+                    input(type='checkbox' style='width:auto !important;')
+                    |  I agree to loanchain.com requesting, processing and utilizing my personal data as mentioned in&nbsp;
+                    a(href='' target='_blank') &quot;Privacy Policy&quot;
+                    |  of p2p.com
+                br
+                .row(style='text-align:center;')
+                  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                    button.btn.btn-primary.btn-lg(type='submit' style='width:150px;')
+                      a(style='color:#fff;') SUBMIT 
+                   
+                br
+                br
+      form
+script(src='assets/js/jquery.min.js')
+script(src='assets/bootstrap/js/bootstrap.min.js')
+script(src='assets/js/loan_chain.js')
+

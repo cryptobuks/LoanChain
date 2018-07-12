@@ -1,0 +1,122 @@
+doctype html
+head
+  script(src='https://code.jquery.com/jquery-3.3.1.js')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+  script(src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')
+  script(src='https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js')
+  link(rel='stylesheet' type='text/css' href='https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css')
+  link(rel='stylesheet' href='assets/css/styles.css')
+header
+  div
+    .container
+      .row
+        .col-lg-2.col-md-2
+          img(src='assets/img/loanchain_logo.png' width='80' height='80')
+        .col-lg-3.col-lg-offset-7.col-md-3.col-md-offset-7
+          .row
+            .dropdown(style='float: right; ')
+              span.btn.dropdown-toggle(type='button' data-toggle='dropdown')
+                i.glyphicon.glyphicon-user(style='margin-top:0px;')
+                | My Account
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href=url1)
+                    i.glyphicon.glyphicon-edit(style='margin-top:0px;')
+                    |  Edit Profile
+                li
+                  a(href=baseurl+'/logout')
+                    i.glyphicon.glyphicon-edit(style='margin-top:0px;')
+                    |  Logout
+  nav.navbar.navbar-default.affix-top(data-spy='affix' data-offset-top='100' style='width: 100%; top:0; z-index:99;')
+    .container
+      .navbar-header
+        button.navbar-toggle.collapsed(data-toggle='collapse' data-target='#navcol-1')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      #navcol-1.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          li(role='presentation')
+            a(href=url3) Active Borrowers
+          li(role='presentation')
+            a(href='#') About Us
+.container
+  .row
+    .col-sm-12.col-md-12.col-lg-12
+      .col-sm-6.col-md-6.col-lg-6
+        .loan_card
+          .row
+            .col-sm-12.col-md-12.col-lg-12
+              .card
+                .card-body
+                  table(style='width: 100%;')
+                    thead
+                      th
+                      th
+                      th
+                    tbody
+                      tr
+                        td Name
+                        td :
+                        td #{fname}
+                      tr
+                        td Email-Id
+                        td :
+                        td #{email}
+                      tr
+                        td Aadhar Number
+                        td :
+                        td #{aadhar}
+                      tr
+                        td PanCard Number
+                        td :
+                        td #{pancard}
+                  div
+                    button.btn.btn-primary(type='submit')
+                      i.glyphicon.glyphicon-edit(style='margin-top: 0px;')
+                      a(href=url style= "color:white;") Document Verification
+                    button.btn.btn-primary(type='submit' style='float: right;')
+                      i.glyphicon.glyphicon-edit(style='margin-top: 0px;')
+                      a(href=url1 style= "color:white;") Edit Profile
+      form(action=action1 method='get')
+        .col-sm-6.col-md-6.col-lg-6
+          .loan_card
+            .card
+              .card-body
+                .row
+                  .col-sm-12.col-md-12.col-lg-12
+                    span(style='font-size: 30px;') Balance: #{balance}
+                .row
+                  .col-sm-12.col-md-12.col-lg-12
+                    .col-sm-6.col-md-6.col-lg-6
+                      input(type='number' name='balance' placeholder='Enter Amount')
+                      input(type='hidden' name='id' value=id)
+                    .col-sm-6.col-md-6.col-lg-6
+                      button.btn.btn-primary(type='submit' style='margin-top: 10px;') Add Amount
+br
+div(style='text-align: -webkit-center;')
+  a(href=url3)
+    button.btn.btn-primary(type='button')
+      | Find Active Borrowers
+.container
+  table#tbl_current_loan.table.table-striped.table-bordered(style='width:100%;')
+    thead
+      tr.tbl_background
+        th Name
+        th Amount
+        th Tenure
+        th Time Left
+        th EMI
+        th Interest
+        th
+          | Money Left
+    tbody
+script(type='text/javascript').
+  $(document).ready(function() {
+  $('#tbl_current_loan').DataTable();
+  } );
+

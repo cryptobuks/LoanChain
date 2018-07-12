@@ -1,0 +1,339 @@
+doctype html
+head
+  script(src='https://code.jquery.com/jquery-3.3.1.js')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+  script(src='https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')
+  script(src='https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js')
+  link(rel='stylesheet' type='text/css' href='https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css')
+  link(rel='stylesheet' href='assets/css/styles.css')
+  title
+header
+  div
+    .container
+      .row
+        .col-lg-2.col-md-2
+          img(src='assets/img/loanchain_logo.png' width='80' height='80')
+        .col-lg-3.col-lg-offset-7.col-md-3.col-md-offset-7
+          .row(style='margin-top:15px;')
+            .dropdown(style='float: right;')
+              span.btn.dropdown-toggle(type='button' data-toggle='dropdown')
+                i.glyphicon.glyphicon-user
+                | My Account
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href='#')
+                    i.glyphicon.glyphicon-edit
+                    |  Edit Profile
+  nav.navbar.navbar-default.affix-top(data-spy='affix' data-offset-top='100' style='width: 100%; top:0; z-index:99;')
+    .container
+      .navbar-header
+        button.navbar-toggle.collapsed(data-toggle='collapse' data-target='#navcol-1')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      #navcol-1.collapse.navbar-collapse
+        ul.nav.navbar-nav.navbar-right
+          li(role='presentation')
+            a(href='#') Personal Loan
+          li(role='presentation')
+            a(href='#') Investment 
+          li(role='presentation')
+            a(href='#') Active Borrowers
+          li(role='presentation')
+            a(href='#') About Us
+.container
+  .row
+    .col-sm-12.col-md-12.col-lg-12
+      .col-sm-3.col-md-3.col-lg-3.col-xs-12.loan_card
+        button#btn_loan_eligibility.btn.btn_borrower_home_page(type='submit')
+          | Check for Loan Eligibility
+      .col-sm-3.col-md-3.col-lg-3.col-xs-12.loan_card
+        button#btn_document_verification.btn.btn_borrower_home_page(type='submit') Document Verification
+      .col-sm-3.col-md-3.col-lg-3.col-xs-12.loan_card
+        button#btn_loan_apply.btn.btn_borrower_home_page(type='submit') Apply for Loan
+      .col-sm-3.col-md-3.col-lg-3.col-xs-12.loan_card
+        button#btn_current_loan.btn.btn_borrower_home_page(type='submit') Current Loan
+  br
+  .loan_card
+    .row
+      .col-sm-12.col-md-12.col-lg-12
+        .col-sm-8.col-md-8.col-lg-8
+          .card
+            .card-body
+              .row
+                .col-lg-6(style='text-align: left;')  Loan Id:
+                .col-lg-6(style='text-align: right;')
+                  | Investor Name:
+              .row
+                .col-lg-6(style='text-align: left;') Tenure 
+                .col-lg-6(style='text-align: right;') Amount: 
+        .col-sm-4.col-md-4.col-lg-4
+          .progress
+            .progress-bar.progress-bar-success.progress-bar-striped(role='progressbar' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100' style='width:80%') 40% Complete (success)
+  br
+.container
+  // apply for loan
+  #loan_eligibility.col-sm-12.col-md-12.col-lg-12.loan_card(style='display: none;')
+    h3.text-left Loan Details
+    hr
+    .row
+      .col-lg-4.col-md-4.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+        i.fa.fa-database
+        .group
+          input(type='number' name='loan_amt' required='')
+          span.highlight
+          span.bar
+          label Loan Amount
+      .col-lg-4.col-md-4.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+        i.glyphicon.glyphicon-calendar
+        .group
+          input(type='text' name='tenure_loan' required='')
+          span.highlight
+          span.bar
+          label Tenure of Loan
+      .col-lg-4.col-md-4.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+        i.glyphicon.glyphicon-calendar
+        .group
+          input(type='text' name='loan_purpose' required='')
+          span.highlight
+          span.bar
+          label Purpose
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+        i.glyphicon.glyphicon-list
+        .group
+          input(type='text' name='loan_desc' required='')
+          span.highlight
+          span.bar
+          label Description of Loan Purpose
+  // check for loan eligibility
+  #loan_apply(style='display:none;')
+    .container.loan_card(style='background:#fff;')
+      form
+        .row
+          .col-md-12
+            h3.text-left Loan Details
+            hr
+            .row
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.fa.fa-database
+                .group
+                  input(type='number' name='loan_amt' required='')
+                  span.highlight
+                  span.bar
+                  label Loan Amount
+              //
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"><i class="glyphicon glyphicon-user"></i>
+                <input type="text" placeholder="First Name">
+                </div>
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.glyphicon.glyphicon-calendar
+                .group
+                  input(type='text' name='tenure_loan' required='')
+                  span.highlight
+                  span.bar
+                  label Tenure of Loan
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.glyphicon.glyphicon-calendar
+                .group
+                  input(type='text' name='loan_purpose' required='')
+                  span.highlight
+                  span.bar
+                  label Purpose
+            .row
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.glyphicon.glyphicon-list
+                .group
+                  input(type='text' name='loan_desc' required='')
+                  span.highlight
+                  span.bar
+                  label Description of Loan Purpose
+            br
+            h3.text-left Personal Details
+            hr
+            .row
+              .col-lg-6.col-md-6.col-sm-12.col-xs-12
+                .row
+                  .col-lg-1.col-md-1
+                    i.fa.fa-intersex(style='font-weight:600;font-size:18px;margin-top:10px;')
+                  .col-lg-4.col-md-4(style='margin-left:20px;')
+                    .radio
+                      span
+                        input(type='radio' name='marital_status' value='Single' style='width:auto !important;')
+                        |  Single
+                  .col-lg-4.col-md-4(style='margin-left:20px;')
+                    .radio
+                      span
+                        input(type='radio' name='marital_status' value='Married' style='width:auto !important;')
+                        |  Married
+              .col-lg-6.col-md-6.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.glyphicon.glyphicon-calendar
+                .group
+                  input(type='date' name='dob' required='')
+                  span.highlight
+                  span.bar
+            .row
+              .col-lg-6.col-md-6.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.fa.fa-building
+                .group
+                  input(type='number' name='pincode' required='')
+                  span.highlight
+                  span.bar
+                  label Pincode
+              .col-lg-6.col-md-6.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.fa.fa-building
+                .group
+                  input(type='text' name='city' required='')
+                  span.highlight
+                  span.bar
+                  label City
+            br
+            h3.text-left Employment Details
+            hr
+            .row
+              .col-lg-6.col-md-6.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.glyphicon.glyphicon-user
+                .group
+                  select
+                    option(value='') Salaried Employee
+                    option(value='') Student
+                    option(value='') Self-Employed
+                  span.highlight
+                  span.bar
+                  label
+              .col-lg-6.col-md-6.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.fa.fa-building
+                .group
+                  input(type='number' name='employment_exp' required='')
+                  span.highlight
+                  span.bar
+                  label Total Employment Experience
+            br
+            .row
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.fa.fa-briefcase
+                .group
+                  input(type='text' name='profession_type' required='')
+                  span.highlight
+                  span.bar
+                  label Profession Type
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.fa.fa-database
+                .group
+                  input(type='text' name='profession_type' required='')
+                  span.highlight
+                  span.bar
+                  label Gross Annual Turnover(in Rs.)
+              .col-lg-4.col-md-4.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.fa.fa-line-chart
+                .group
+                  input(type='text' name='profession_type' required='')
+                  span.highlight
+                  span.bar
+                  label Gross Annual Profit(in Rs.)
+            br
+            h3.text-left Financial Details
+            hr
+            .row
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.glyphicon.glyphicon-map-marker
+                .group
+                  input(type='number' name='residential_type' required='')
+                  span.highlight
+                  span.bar
+                  label Residential Type
+            .row
+              .col-lg-6.col-md-6.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.fa.fa-money
+                .group
+                  input(type='number' name='spouse_income' required='')
+                  span.highlight
+                  span.bar
+                  label Spouse Monthly Income (in Rs)
+              .col-lg-6.col-md-6.col-sm-12.col-xs-12(style='display: -webkit-inline-box;')
+                i.fa.fa-money
+                .group
+                  input(type='number' name='other_income' required='')
+                  span.highlight
+                  span.bar
+                  label Any Other Monthly Income (in Rs)
+            .row
+              .col-lg-6.col-md-6.col-sm-12.col-xs-12
+                span(style='font-size:15px;margin-left:20px;') Do You have any Loan running?
+                .row
+                  .col-lg-1.col-md-1
+                    i.fa.fa-database(style='font-weight:600;font-size:18px;margin-top:10px;')
+                  .col-lg-4.col-md-4(style='margin-left:20px;')
+                    .radio
+                      span
+                        input(type='radio' name='current_loan' value='Yes' style='width:auto !important;')
+                        |  Yes
+                  .col-lg-4.col-md-4(style='margin-left:20px;')
+                    .radio
+                      span
+                        input(type='radio' name='current_loan' value='No' style='width:auto !important;')
+                        |  No
+            .row
+              .col-lg-6.col-md-6.col-sm-12.col-xs-12
+                span(style='font-size:15px;margin-left:20px;') Do You have any Credit cards?
+                .row
+                  .col-lg-1.col-md-1
+                    i.fa.fa-credit-card(style='font-weight:600;font-size:18px;margin-top:10px;')
+                  .col-lg-4.col-md-4(style='margin-left:20px;')
+                    .radio
+                      span
+                        input(type='radio' name='credit_cards' value='Yes' style='width:auto !important;')
+                        |  Yes
+                  .col-lg-4.col-md-4(style='margin-left:20px;')
+                    .radio
+                      span
+                        input(type='radio' name='credit_cards' value='No' style='width:auto !important;')
+                        |  No
+            .row(style='margin-left:30px;')
+              .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                br
+                .row(style='text-align:center;')
+                  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                    button.btn.btn-primary.btn-lg(type='button' style='width:150px;') SUBMIT 
+                br
+                br
+        form
+  // current loan
+  #current_loan.loan_card(style='display: none;')
+    table#tbl_current_loan.table.table-striped.table-bordered(style='width:100%;')
+      thead
+        tr.tbl_background
+          th Personal Details
+          th Loan Details
+          th Employment Details
+          th Funding Status
+          th Invest
+          th Action
+      tbody
+script(type='text/javascript').
+  $(document).ready(function() {
+  $('#tbl_current_loan').DataTable();
+  } );
+script.
+  $(document).ready(function(){
+  $("#btn_loan_eligibility").click(function(){
+  $("#loan_eligibility").hide();
+  $("#current_loan").hide();
+  $("#loan_apply").show();
+  });
+  $("#btn_loan_apply").click(function(){
+  $("#loan_eligibility").show();
+  $("#current_loan").hide();
+  $("#loan_apply").hide();
+  });
+  $("#btn_current_loan").click(function(){
+  $("#loan_eligibility").hide();
+  $("#current_loan").show();
+  $("#loan_apply").hide();
+  });
+  });
+
